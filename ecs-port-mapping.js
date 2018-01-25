@@ -1,5 +1,4 @@
 /* This script will read ECS_CONTAINER_METADATA_FILE file and set up dynamic port */
-	console.log('PORT-pre:', process.env.PORT);
 if (process.env.ECS_CONTAINER_METADATA_FILE) {
 	// Define JSON File
 	var fs = require("fs");
