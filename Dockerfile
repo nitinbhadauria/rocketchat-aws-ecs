@@ -4,7 +4,7 @@ ENV RC_VERSION 0.60.4
 
 MAINTAINER buildmaster@rocket.chat
 
-COPY ../app /app
+COPY ./app /app
 RUN set -x \
  && cd /app/bundle/programs/server \
  && npm install \
