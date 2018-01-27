@@ -15,6 +15,7 @@ if (process.env.ECS_CONTAINER_METADATA_FILE) {
 			console.log('Re-try to fetch the status..');
 	}
 	// Set the Port
+	instance.port = String(jsonContent.PortMappings[0].HostPort).trim();
 	// process.env.PORT = jsonContent.PortMappings[0].HostPort
-	process.stdout.write('export PORT='+jsonContent.PortMappings[0].HostPort);
+	// process.stdout.write('export PORT='+jsonContent.PortMappings[0].HostPort);
 };
