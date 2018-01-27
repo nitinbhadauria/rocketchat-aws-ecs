@@ -12,7 +12,7 @@ RUN set -x \
  && tar -zxf rocket.chat.tgz -C /app \
  && rm rocket.chat.tgz rocket.chat.tgz.asc \
  && curl -SLf "https://raw.githubusercontent.com/nitinbhadauria/rocketchat-aws-ecs/master/ecs-port-mapping.js" -o /app/bundle/programs/server/ecs-port-mapping.js \
- && sed "/InstanceStatus.registerInstance/irequire('./programs/server/ecs-port-mapping.js');" /app/bundle/programs/server/app/app.js
+ && sed -i "/InstanceStatus.registerInstance/irequire('./programs/server/ecs-port-mapping.js');" /app/bundle/programs/server/app/app.js \
  && cd /app/bundle/programs/server \
  && npm install \
  && npm cache clear --force \
