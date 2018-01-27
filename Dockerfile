@@ -1,6 +1,6 @@
 FROM rocketchat/base:8
 
-ENV RC_VERSION 0.61.0-develop
+ENV RC_VERSION 0.60.4
 
 MAINTAINER buildmaster@rocket.chat
 
@@ -11,7 +11,8 @@ RUN set -x \
  && mkdir -p /app \
  && tar -zxf rocket.chat.tgz -C /app \
  && rm rocket.chat.tgz rocket.chat.tgz.asc \
- && curl -SLf "https://raw.githubusercontent.com/nitinbhadauria/rocketchat-aws-ecs/master/ecs-port-mapping.js" -o /app/bundle/ \
+ && curl -SLf "https://raw.githubusercontent.com/nitinbhadauria/rocketchat-aws-ecs/master/ecs-port-mapping.js" -o /app/bundle/programs/server/ecs-port-mapping.js \
+ && sed "/InstanceStatus.registerInstance/irequire('./programs/server/ecs-port-mapping.js');" /app/bundle/programs/server/app/app.js
  && cd /app/bundle/programs/server \
  && npm install \
  && npm cache clear --force \
