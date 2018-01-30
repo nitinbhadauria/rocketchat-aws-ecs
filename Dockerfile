@@ -2,9 +2,10 @@ FROM rocketchat/base:8
 
 MAINTAINER nitin.bhadauria@tothenew.com
 
-COPY ./app /app
 RUN ls -ltr /*
 RUN ls -ltr /*/*
+COPY ./app /app
+
 RUN set -x \
  && cd /app/bundle/programs/server \
  && npm install \
