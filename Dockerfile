@@ -3,12 +3,13 @@ FROM rocketchat/base:8
 MAINTAINER nitin.bhadauria@tothenew.com
 
 RUN ls ./*
-RUN ls ./*/*
 
 RUN mkdir -p /app
 
-ADD ./app/bundle /app/
 COPY ./app/bundle /app/
+
+RUN ls /app/bundle/
+RUN ls /app/bundle/programs
 
 RUN set -x \
  && cd /app/bundle/programs/server \
