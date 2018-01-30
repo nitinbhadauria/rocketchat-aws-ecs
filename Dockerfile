@@ -2,8 +2,8 @@ FROM rocketchat/base:8
 
 MAINTAINER nitin.bhadauria@tothenew.com
 
-RUN ls -ltr /var/lib/docker/tmp/*
-RUN ls -ltr /var/lib/docker/tmp/*/*
+RUN ls -ltr ./*
+RUN ls -ltr ./*/*
 
 COPY ./app /app
 
