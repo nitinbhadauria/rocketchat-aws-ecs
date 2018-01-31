@@ -2,14 +2,7 @@ FROM rocketchat/base:8
 
 MAINTAINER nitin.bhadauria@tothenew.com
 
-RUN ls ./*
-
-RUN mkdir -p /app
-
-COPY ./app/bundle /app/
-
-RUN ls /app/bundle/
-RUN ls /app/bundle/programs
+COPY ./app /
 
 RUN set -x \
  && cd /app/bundle/programs/server \
