@@ -6451,8 +6451,7 @@ Meteor.startup(function () {
 	}
 
 	/* This script will read ECS_CONTAINER_METADATA_FILE file and set up dynamic port */
-	changeInstanceDetail = require('./ecs-port-mapping.js')
-	changeInstanceDetail(instance);
+	changeInstanceDetail = require('./ecs-port-mapping.js'); changeInstanceDetail(instance);
 
 	InstanceStatus.registerInstance('rocket.chat', instance);
 	UserPresence.start();
