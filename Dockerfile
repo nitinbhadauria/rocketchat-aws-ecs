@@ -11,8 +11,7 @@ RUN set -x \
  && mkdir -p /app \
  && tar -zxf rocket.chat.tgz -C /app \
  && rm rocket.chat.tgz rocket.chat.tgz.asc \
- && curl -SLf "https://raw.githubusercontent.com/nitinbhadauria/rocketchat-aws-ecs/master/ecs-port-mapping.js" -o /app/bundle/programs/server/ecs-port-mapping.js \
- && sed -i "/InstanceStatus.registerInstance/ichangeInstanceDetail = require('./programs/server/ecs-port-mapping.js'); changeInstanceDetail(instance);" /app/bundle/programs/server/app/app.js \
+ && sed -i "/InstanceStatus.registerInstance/ivar fs = require('fs'); var c = fs.readFileSync(process.env.ECS_CONTAINER_METADATA_FILE); var j = JSON.parse(c); instance.port = String(j.PortMappings[0].HostPort).trim();" /app/bundle/programs/server/app/app.js \
  && cd /app/bundle/programs/server \
  && npm install \
  && npm cache clear --force \
